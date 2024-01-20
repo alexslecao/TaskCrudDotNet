@@ -102,5 +102,28 @@ namespace TaskCrud.Controllers
 
             return Result;
         }
+
+        [HttpDelete("{id}")]
+        public string Delete(string Id)
+        {
+            string Result;
+            try
+            {
+                SortedList Params = new();
+
+                Params["SQ_TASK"] = Id;
+
+                TaskBLL DeleteTaskBLL = new();
+                BaseResult ResultAux = DeleteTaskBLL.Delete(Params);
+
+                Result = ResultJson(ResultAux);
+            }
+            catch (Exception Erro)
+            {
+                throw new Exception("Erro ao Processar pedido. Erro: " + Erro.Message);
+            }
+
+            return Result;
+        }
     }
 }

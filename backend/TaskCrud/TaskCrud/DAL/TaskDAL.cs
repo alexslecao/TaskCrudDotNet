@@ -97,5 +97,26 @@ namespace TaskCrud.DAL
 
             return Result;
         }
+
+        public BaseResult Delete(SortedList Param)
+        {
+            BaseResult Result = new();
+
+            try
+            {
+                SqlCommand Command = new("STP_TASK_DELETE");
+
+                Command.Parameters.Add(UtilityParam.CaptureParamSql(Param, "SQ_TASK", true));
+
+                Result = ExecModifyCommand(Command);
+            }
+            catch (SqlException Error)
+            {
+                Result.Type = MessageType.Error;
+                Result.Message = "Erro encontrado: " + Error.Message;
+            }
+
+            return Result;
+        }
     }
 }

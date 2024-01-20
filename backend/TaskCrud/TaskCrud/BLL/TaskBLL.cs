@@ -170,5 +170,40 @@ namespace TaskCrud.BLL
 
             return Result;
         }
+
+        public BaseResult Delete(SortedList Param)
+        {
+            BaseResult Result = new();
+
+            try
+            {
+                string Message = "";
+
+                //Validar Nome do Usuario
+                string TaskId = UtilityParam.CaptureTextField(Param, "SQ_TASK");
+
+                if (string.IsNullOrEmpty(TaskId))
+                    Message += "#O campo Id da Atividade é obrigatório";
+
+                if (string.IsNullOrEmpty(Message))
+                {
+                    TaskDAL DeleteTaskDAL = new();
+                    Result = DeleteTaskDAL.Delete(Param);
+                }
+                else
+                {
+                    Result.Type = MessageType.Warning;
+                    Result.Message = Message;
+                }
+
+            }
+            catch (Exception Erro)
+            {
+                Result.Type = MessageType.Error;
+                Result.Message = "Erro encontrado: " + Erro.Message;
+            }
+
+            return Result;
+        }
     }
 }
