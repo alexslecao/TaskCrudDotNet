@@ -1,0 +1,24 @@
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'[dbo].[STP_TASK_POST]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+    drop procedure [dbo].[STP_TASK_POST]
+GO
+
+
+CREATE PROCEDURE STP_TASK_POST
+	@NM_TASK VARCHAR(100),
+    @DS_TASK VARCHAR(500)
+AS
+BEGIN
+	SET NOCOUNT ON;
+
+    
+	INSERT INTO TB_TASK(NM_TASK, DS_TASK)
+    VALUES(@NM_TASK, @DS_TASK)
+
+    SELECT 'Success' AS 'Type', '' AS 'Message'
+END
+GO
