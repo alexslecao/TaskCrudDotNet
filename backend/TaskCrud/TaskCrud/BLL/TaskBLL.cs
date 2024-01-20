@@ -83,7 +83,7 @@ namespace TaskCrud.BLL
             return Result;
         }
 
-        public BaseResult Post(SortedList Param) 
+        public BaseResult Insert(SortedList Param) 
         {
             BaseResult Result = new();
 
@@ -107,7 +107,7 @@ namespace TaskCrud.BLL
                 if (string.IsNullOrEmpty(Message))
                 {
                     TaskDAL PostTaskDAL = new();
-                    Result = PostTaskDAL.Post(Param);
+                    Result = PostTaskDAL.Insert(Param);
                 }
                 else
                 {
@@ -125,7 +125,7 @@ namespace TaskCrud.BLL
             return Result;
         }
 
-        public BaseResult Put(SortedList Param)
+        public BaseResult Update(SortedList Param)
         {
             BaseResult Result = new();
 
@@ -153,7 +153,7 @@ namespace TaskCrud.BLL
                 if (string.IsNullOrEmpty(Message))
                 {
                     TaskDAL PostTaskDAL = new();
-                    Result = PostTaskDAL.Put(Param);
+                    Result = PostTaskDAL.Update(Param);
                 }
                 else
                 {

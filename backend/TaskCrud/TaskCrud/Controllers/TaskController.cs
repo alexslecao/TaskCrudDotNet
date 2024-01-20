@@ -55,7 +55,7 @@ namespace TaskCrud.Controllers
         }
 
         [HttpPost]
-        public string Post([FromBody] SortedList BodyParam) 
+        public string Insert([FromBody] SortedList BodyParam) 
         {
             string Result;
             try 
@@ -63,10 +63,10 @@ namespace TaskCrud.Controllers
                 SortedList Params = new();
 
                 Params["NM_TASK"] = UtilityParam.CaptureTextField(BodyParam, "name");
-                Params["DS_TASK"] = UtilityParam.CaptureTextField(BodyParam, "descripton");
+                Params["DS_TASK"] = UtilityParam.CaptureTextField(BodyParam, "description");
 
-                TaskBLL PostTask = new();
-                BaseResult ResultAux = PostTask.Post(Params);
+                TaskBLL InsertTask = new();
+                BaseResult ResultAux = InsertTask.Insert(Params);
 
                 Result = ResultJson(ResultAux, true);
             }
@@ -79,7 +79,7 @@ namespace TaskCrud.Controllers
         }
 
         [HttpPut("{id}")]
-        public string Put(string Id, [FromBody] SortedList BodyParam)
+        public string Update(string Id, [FromBody] SortedList BodyParam)
         {
             string Result;
             try
@@ -88,10 +88,10 @@ namespace TaskCrud.Controllers
 
                 Params["SQ_TASK"] = Id;
                 Params["NM_TASK"] = UtilityParam.CaptureTextField(BodyParam, "name");
-                Params["DS_TASK"] = UtilityParam.CaptureTextField(BodyParam, "descripton");
+                Params["DS_TASK"] = UtilityParam.CaptureTextField(BodyParam, "description");
 
-                TaskBLL PutTaskBLL = new();
-                BaseResult ResultAux = PutTaskBLL.Put(Params);
+                TaskBLL UpdateTaskBLL = new();
+                BaseResult ResultAux = UpdateTaskBLL.Update(Params);
 
                 Result = ResultJson(ResultAux);
             }

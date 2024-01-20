@@ -53,13 +53,13 @@ namespace TaskCrud.DAL
             return Result;
         }
 
-        public BaseResult Post(SortedList Param) 
+        public BaseResult Insert(SortedList Param) 
         {
             BaseResult Result = new();
 
             try
             {
-                SqlCommand Command = new("STP_TASK_POST");
+                SqlCommand Command = new("STP_TASK_INSERT");
 
                 Command.Parameters.Add(UtilityParam.CaptureParamSql(Param, "NM_TASK", false));
                 Command.Parameters.Add(UtilityParam.CaptureParamSql(Param, "DS_TASK", false));
@@ -75,13 +75,13 @@ namespace TaskCrud.DAL
             return Result;
         }
 
-        public BaseResult Put(SortedList Param)
+        public BaseResult Update(SortedList Param)
         {
             BaseResult Result = new();
 
             try
             {
-                SqlCommand Command = new("STP_TASK_PUT");
+                SqlCommand Command = new("STP_TASK_UPDATE");
 
                 Command.Parameters.Add(UtilityParam.CaptureParamSql(Param, "SQ_TASK", true));
                 Command.Parameters.Add(UtilityParam.CaptureParamSql(Param, "NM_TASK", false));

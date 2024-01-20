@@ -3,12 +3,12 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'[dbo].[STP_TASK_PUT]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
-    drop procedure [dbo].[STP_TASK_PUT]
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'[dbo].[STP_TASK_UPDATE]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+    drop procedure [dbo].[STP_TASK_UPDATE]
 GO
 
 
-CREATE PROCEDURE STP_TASK_PUT
+CREATE PROCEDURE STP_TASK_UPDATE
     @SQ_TASK INT,
 	@NM_TASK VARCHAR(100),
     @DS_TASK VARCHAR(500)

@@ -95,10 +95,6 @@ namespace TaskCrud.Connection
                 {
                     throw new Exception("A tabela de retorno do comando é nula");
                 }
-                else if (TbResult.Rows.Count == 0)
-                {
-                    throw new Exception("A tabela não retornou registros");
-                }
                 else
                 {
                     string Type = UtilityDatabase.CaptureTextFild(TbResult, "Type");
